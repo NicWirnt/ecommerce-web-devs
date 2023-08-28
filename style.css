@@ -20,3 +20,13 @@
 .hero-container{
   background: radial-gradient(circle at bottom right, #49d8f1e3, transparent);
 }
+
+/* Style text inputs */
+.input-form-login{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
