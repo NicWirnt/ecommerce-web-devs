@@ -1,0 +1,22 @@
+.top-link-icons{
+    transition: all 0.3 ease;
+    transform:scale(1);
+    padding: 0 5px;
+}
+
+.top-link-icons:hover{
+    background-color: skyblue;
+    border-radius:5px;
+    color: red;
+    transform:scale(1.2)
+}
+
+.active{
+    border-top: 2px solid;
+    color: blue;
+    padding: 0 2px;
+}
+
+.hero-container{
+  background: radial-gradient(circle at bottom right, #49d8f1e3, transparent);
+}

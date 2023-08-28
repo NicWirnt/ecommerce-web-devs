@@ -1,0 +1,47 @@
+user: {
+    _id: int,
+    username: varchar,
+    password: varchar,
+    first_name: varchar,
+    last_name: varchar,
+    telephone: varchar,
+    email: eamil,
+}
+
+user_address: {
+    _id: int,
+    user._id: int,
+    address: varchar,
+    city: varchar,
+    postcode: varchar,
+}
+
+product_category:{
+    _id: int,
+    parent_category_id:int.
+    name:varchar,
+    desc: varchar,
+}
+
+product:{
+    _id: int,
+    name:varchar,
+    desc: varchar,
+    SKU: varchar,
+    slug: varchar,
+    product_category_id:int,
+    price:int,
+    product_qty: int,
+}
+order_details{
+    _id:int,
+    products:[],
+    totalAmount:int,
+    payment_id:int,
+}
+payment_details:{
+    _id:int,
+    order_details_id:int,
+    totalAmount:int,
+    status:varchar,
+}
