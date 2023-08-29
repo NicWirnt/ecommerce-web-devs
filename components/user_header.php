@@ -17,7 +17,7 @@
                     <div class=" flex flex-row gap-10 ml-8">
                         <a href="#"> <p class="">My Account</p></a>
                         <a href="#"><p class="">About Us</p></a>
-                        <a href="#"><p class="">Log In</p></a>    
+                        <a href="/ass2/pages/login.php"><p class="">Log In</p></a>    
                     </div>
                     <div class="flex flex-row justify-around gap-6 mr-8">
                         <a href="" class="top-link-icons"><i class="fa-brands fa-facebook  "></i></a>
@@ -41,9 +41,9 @@
     </header>
     <div id="bottom-links" class=" sticky top-0 flex justify-between border-t-2 mb-6 bg-white">
         <nav class="flex gap-4 nav-menu ml-8">
-            <a href="/pages/index.html" >Home</a>
-            <a href="/pages/product.html">Products</a>
-            <a href="/categories.html">Categories</a>
+            <a href="/ass2/pages/index.php" >Home</a>
+            <a href="/ass2/pages/product.php.">Products</a>
+            <a href="/ass2/pages/categories.php">Categories</a>
         </nav>
         <div class="relative hover:cursor-pointer">
             <i class="fa-solid fa-cart-shopping text-2xl pr-4 mr-1 mt-1"></i>

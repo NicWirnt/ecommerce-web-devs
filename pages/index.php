@@ -1,3 +1,7 @@
+<?php
+    include '../config/connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,47 +53,11 @@
         <div class="text-center text-2xl mb-6">
             Featured Products
         </div>
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="flex flex-col justify-center items-center bg-neutral-200 rounded-xl transition-all duration-300 hover:bg-blue-200 hover:scale-110 gap-1">
-                <img src="assets/images/watch_4.webp" alt="smartwatch" >
-                <p>Product Name</p>
-                <p>product price</p>
-                <button class="bg-red-800
-                 text-white rounded-md p-1 hover:bg-red-500 mb-1 shadow-xl" id="addToCart">Add to cart  <i class="fa-solid fa-cart-shopping" ></i></button>
-            </div>
-            <div class="flex flex-col justify-center items-center bg-neutral-200 rounded-xl transition-all duration-300 hover:bg-blue-200 hover:scale-110 gap-1">
-                <img src="assets/images/earphones_a_4.webp" alt="earphone" >
-                <p>Product Name</p>
-                <p>product price</p>
-                <button class="bg-red-800 text-white rounded-md p-1 hover:bg-red-500 mb-1 shadow-xl">Add to cart  <i class="fa-solid fa-cart-shopping"></i></button>
-            </div>
-            <div class="flex flex-col justify-center items-center bg-neutral-200 rounded-xl transition-all duration-300 hover:bg-blue-200 hover:scale-110 gap-1">
-                <img src="assets/images/earphones_b_2.webp" alt="earphone" >
-                <p>Product Name</p>
-                <p>product price</p>
-                <button class="bg-red-800 text-white rounded-md p-1 hover:bg-red-500 mb-1 shadow-xl">Add to cart  <i class="fa-solid fa-cart-shopping"></i></button>
-            </div>
-            <div class="flex flex-col justify-center items-center bg-neutral-200 rounded-xl transition-all duration-300 hover:bg-blue-200 hover:scale-110 gap-1">
-                <img src="assets/images/speaker2.webp" alt="earphone" >
-                <p>Product Name</p>
-                <p>product price</p>
-                <button class="bg-red-800 text-white rounded-md p-1 hover:bg-red-500 mb-1 shadow-xl">Add to cart  <i class="fa-solid fa-cart-shopping"></i></button>
-            </div>
-            <div class="flex flex-col justify-center items-center bg-neutral-200 rounded-xl transition-all duration-300 hover:bg-blue-200 hover:scale-110 gap-1">
-                <img src="assets/images/earphones_c_2.webp" alt="earphone" >
-                <p>Product Name</p>
-                <p>product price</p>
-                <button class="bg-red-800 text-white rounded-md p-1 hover:bg-red-500 mb-1 shadow-xl">Add to cart  <i class="fa-solid fa-cart-shopping"></i></button>
-            </div>
-        </div>
+        <?php include '../components/product_card.php' ?>
     </div>
 
-    <footer id="footer" class="bg-neutral-700 w-full mt-5">
-        <div class="text-white pl-6 h-10 flex justify-center items-center">All rights reserved © Sounds Beats</div>
-    </footer>
+    <?php include '../components/user_footer.php' ?>
 
     <script src="../assets/js/header.js"></script>
-    <script>
-    </script>
 </body>
 </html>
