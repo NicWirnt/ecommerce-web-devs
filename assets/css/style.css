@@ -1,3 +1,16 @@
+.message{
+  position:sticky;
+  top: 0;
+  max-width: fit-content;
+  margin: 0 auto;
+  background-color: antiquewhite;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  z-index: 50;
+}
+
 .top-link-icons{
     transition: all 0.3 ease;
     transform:scale(1);
@@ -30,3 +43,15 @@
   border-radius: 4px;
 }
 
+
+.hero-banner-image {
+  width: 450px;
+  height: 450px;
+}
+
+@media screen and (max-width: 800px){
+  .hero-banner-image{
+    width: 60%;
+    height: 60%;
+  }
+}

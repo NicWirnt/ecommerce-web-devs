@@ -1,5 +1,8 @@
 <?php
     include '../config/connect.php';
+
+    session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -18,23 +21,21 @@
 <?php include '../components/user_header.php'; ?>
     
     <div id="hero">
-        <div class="hero-container w-full max-h-30vh">
+        <div class="hero-container w-full max-h-30vh shadow-lg">
             <div class="hero-main flex flex-row justify-between md:justify-around items-center w-100">
                 <div class="inner-hero m-8 ">
-                    <h3 class="text-6xl font-mono mb-6">Summer Sale</h3>
-                    <h4 class="text-2xl">Great Deals!!!</h4>
-                    <button type="button" class="bg-[#49d8f1e3] text-red-900 hover:bg-blue-300 rounded-md shadow-lg p-1 mt-2">Shop Now</button>
+                    <h3 class="text-2xl md:text-6xl font-mono mb-6">Summer Sale</h3>
+                    <h4 class="text-lg md:text-2xl">Great Deals!!!</h4>
+                    <button type="button" class="bg-[#49d8f1e3] text-red-900 hover:bg-blue-300 rounded-md shadow-lg p-1 mt-2 text-sm md:text-base">Shop Now</button>
                 </div>
                 <div>
-                    <img src="./assets/images/a64b345016e96adfb8849af5521c8e0ecfe8f027-555x555.webp" alt="earphone" />
+                    <img src="../assets/images/headphones_a_3.webp" alt="earphone" class="hero-banner-image"/>
                 </div>
-              
             </div>
-           
         </div>
     </div>
 
-    <div id="features-container" class="flex flex-col md:flex-row justify-around mt-8 mb-8">
+    <div id="features-container" class="flex flex-col md:flex-row justify-around m-8 text-base md:text-lg shadow-lg">
         <div class="flex flex-row items-center gap-2">
             <i class="fa-solid fa-truck-fast text-4xl"></i>
             Free Shipping

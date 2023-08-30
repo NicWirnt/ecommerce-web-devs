@@ -4,10 +4,15 @@
             echo '
                 <div class="message">
                     <span> '.$message.'</span>
+                    <i class="fas fa-times hover:cursor-pointer hover:text-black font-bold text-lg text-red-500" onclick="this.parentElement.remove();"></i>
                 </div> 
             ';
         }
     }
+
+    if(isset($_SESSION['customer_id'])){
+        $customer_id = $_SESSION['customer_id'];
+    } 
 ?>
 
 <header>
@@ -45,8 +50,36 @@
             <a href="/ass2/pages/product.php.">Products</a>
             <a href="/ass2/pages/categories.php">Categories</a>
         </nav>
-        <div class="relative hover:cursor-pointer">
-            <i class="fa-solid fa-cart-shopping text-2xl pr-4 mr-1 mt-1"></i>
-            <p class="absolute top-0 right-0 bg-red-500 rounded-full px-2 py-1 text-xs" id="cart-count">0</p>
+        <div class="flex flex-row items-center justify-center gap-4">
+            <div class="flex flex-row gap-2 items-center">
+                <?php 
+                $select_customer = $conn->prepare("SELECT * FROM `customers` WHERE ID = ?");
+                $select_customer->execute([$customer_id]);
+                if($select_customer->rowCount() > 0) {
+                    $fetch_profile = $select_customer->fetch(PDO::FETCH_ASSOC);
+                ?>
+                <p>Howdy, <?= $fetch_profile["FirstName"]; ?></p>
+                <i class="fa-solid fa-user"></i>
+                <?php
+                }
+                
+                ?>
+
+            
+            </div>
+            <div class="relative hover:cursor-pointer">
+                <i class="fa-solid fa-cart-shopping text-2xl pr-4 mr-1 mt-1"></i>
+                
+                    <?php 
+                    $cart = $conn->prepare("SELECT * FROM `cart` WHERE CustomerId = ?");
+                    $cart->execute([$customer_id]);
+                    $cart_count = $cart->rowCount();
+                    ?>
+                        <p class="absolute top-0 right-0 bg-red-200 rounded-full px-2 py-1 text-xs" id="cart-count"><?= $cart_count ?></p>
+                    <?php
+                    ?>
+                
+            </div>
         </div>
+        
     </div>
