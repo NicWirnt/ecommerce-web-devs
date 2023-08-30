@@ -34,4 +34,15 @@ if(isset($_POST['add_to_cart'])){
         }
     }
 }
+
+if(isset($_POST['delete_from_cart'])){
+    $cartId = $_POST['CartId'];
+    $cartId = filter_var($cartId, FILTER_SANITIZE_STRING);
+    
+    $update_cart = $conn->prepare("DELETE FROM `cart` WHERE `cart`.`Id` = ?" );
+    $update_cart->execute([$cartId]);
+
+    $message[] = "Product deleted from cart!";
+}
+
 ?>

@@ -1,5 +1,5 @@
 const currentPath = window.location.pathname;
-console.log(currentPath)
+
 const links = document.querySelectorAll('.nav-menu a');
         links.forEach((link) => {
             if(link.getAttribute('href') === currentPath){
@@ -9,3 +9,20 @@ const links = document.querySelectorAll('.nav-menu a');
             }
         });
 
+const messageElement = document.querySelector('.message');
+
+setTimeout(()=>{
+    messageElement.style.display = 'none';
+},3000);
+
+const cart = document.querySelector(".cart-wrapper");
+document.querySelector("#cart").onclick = () => {
+   
+    cart.classList.toggle("active");
+
+}
+
+document.querySelector("#back-cart").onclick = () => {
+  
+    cart.classList.remove("active");
+}
