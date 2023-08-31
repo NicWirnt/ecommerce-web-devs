@@ -1,17 +1,24 @@
 <?php
-    $db_name = 'mysql:host=localhost;dbname=my_store';
-    $user_name = 'root';
-    $user_password = '';
-
-    try {
-        //code...
-        $conn = new PDO($db_name, $user_name, $user_password);
+    
+    function OpenCon()
+    {
+        $db_name = 'mysql:host=localhost;dbname=store';
+        $user_name = 'root';
+        $user_password = '';
+        try {
+            $conn = new PDO($db_name, $user_name, $user_password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $conn;
+    
+        } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            die();
+        }
         
-        // Set PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    die();
-}
+    }
+    
+    function CloseCon($conn)
+    {
+        return $conn = null;
+    }
 ?>
