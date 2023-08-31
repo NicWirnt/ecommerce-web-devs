@@ -168,3 +168,5 @@ INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `Suppl
 INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('4', 'Keyboard Logitech', 'Keyboard Logitech', '4', '5', '1', '200', NULL, NULL, '400', '7', '1', '1', '1', NULL);
 INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('5', 'Headphone', 'Headphone Xiaomi', '3', '4', '1', '350', NULL, 'White', '280', '6', '1', '1', '0', NULL);
 
+-- I need to update this column -- pass@123
+ALTER TABLE admin add pass varchar(250); 
