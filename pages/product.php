@@ -1,5 +1,15 @@
 <?php
     include '../config/connect.php';
+
+    session_start();
+
+    if(isset($_SESSION['customer_id'])){
+        $customer_id = $_SESSION['customer_id'];
+    } else{
+        $customer_id = '';
+    }
+
+    include '../components/cart.php';
 ?>
 
 

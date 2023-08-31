@@ -1,3 +1,16 @@
+.message{
+  position:sticky;
+  top: 0;
+  max-width: fit-content;
+  margin: 0 auto;
+  background-color: antiquewhite;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  z-index: 50;
+}
+
 .top-link-icons{
     transition: all 0.3 ease;
     transform:scale(1);
@@ -30,3 +43,52 @@
   border-radius: 4px;
 }
 
+
+.hero-banner-image {
+  width: 450px;
+  height: 450px;
+}
+
+.cart-wrapper{
+  display: none;
+  width: 100vw;
+  background:rgba(0, 0, 0, 0.5);
+  position:fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  transition: all 1s ease-in-out;
+}
+.cart .active{
+  display:inline-block;
+
+}
+.cart-container{
+  height: 100vh;
+  width: 40%;
+  background-color: white;
+  float: right;
+  padding: 40px 10px;
+  position: relative;
+}
+
+.cart-heading{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  gap: 1rem;
+  margin-left: 14px;
+  border: none;
+  background-color: transparent;
+}
+
+
+
+@media screen and (max-width: 800px){
+  .hero-banner-image{
+    width: 60%;
+    height: 60%;
+  }
+}

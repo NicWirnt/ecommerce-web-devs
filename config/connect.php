@@ -14,7 +14,7 @@
             echo "Connection failed: " . $e->getMessage();
             die();
         }
-        
+
     }
     
     function CloseCon($conn)
