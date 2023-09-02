@@ -45,4 +45,6 @@ if(isset($_POST['delete_from_cart'])){
     $message[] = "Product deleted from cart!";
 }
 
+
+
 ?>

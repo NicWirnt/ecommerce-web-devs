@@ -1,6 +1,7 @@
 <?php
     include '../config/connect.php';
     
+    $conn = openCon();
     session_start();
 
     if(isset($_SESSION['customer_id'])){

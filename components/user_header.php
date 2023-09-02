@@ -12,7 +12,9 @@
 
     if(isset($_SESSION['customer_id'])){
         $customer_id = $_SESSION['customer_id'];
-    } 
+    } else{
+        $customer_id='';
+    }
 ?>
 
 <header>
@@ -22,7 +24,7 @@
                     <div class=" flex flex-row gap-10 ml-8">
                         <a href="#"> <p class="">My Account</p></a>
                         <a href="#"><p class="">About Us</p></a>
-                        <a href="/ass2/pages/login.php"><p class="">Log In</p></a>    
+                        <a href="login.php"><p class="">Log In</p></a>    
                     </div>
                     <div class="flex flex-row justify-around gap-6 mr-8">
                         <a href="" class="top-link-icons"><i class="fa-brands fa-facebook  "></i></a>
@@ -46,12 +48,12 @@
     </header>
     <div id="bottom-links" class=" sticky top-0 flex justify-between border-t-2 mb-6 bg-white z-index-50">
         <nav class="flex gap-4 nav-menu ml-8">
-            <a href="/ass2/pages/index.php" >Home</a>
-            <a href="/ass2/pages/product.php.">Products</a>
-            <a href="/ass2/pages/categories.php">Categories</a>
+            <a href="index.php" >Home</a>
+            <a href="product.php.">Products</a>
+            <a href="#">Categories</a>
         </nav>
         <div class="flex flex-row items-center justify-center gap-4">
-        <?php 
+        <?php
                 $select_customer = $conn->prepare("SELECT * FROM `customers` WHERE ID = ?");
                 $select_customer->execute([$customer_id]);
                 if($select_customer->rowCount() > 0) {
@@ -59,6 +61,7 @@
                 ?>
                 <div class="flex flex-row gap-2 items-center">
                 <p>Howdy, <?= $fetch_profile["FirstName"]; ?></p>
+                <a href="../components/user_logout.php" onclick=" return confirm('Are you sure to logout?')"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
                 <i class="fa-solid fa-user"></i>
                 </div>
                 <div class="relative hover:cursor-pointer" id="cart">
@@ -102,28 +105,33 @@
                 if($cart_count > 0 ){
                    while($fetch_cart = $cart->fetch(PDO::FETCH_ASSOC)){
                     ?>
-                    <form action="" method="post">
-                    <input type="hidden" name="CartId" value="<?= $fetch_cart['Id']; ?>">
-                    <div id="cart-product-card" class="text-black flex flex-row items-center justify-between gap-4">
+                    <form action="../stripe/checkout.php" method="post">
+                        <input type="hidden" name="CartId" value="<?= $fetch_cart['Id']; ?>">
+                        <div id="cart-product-card" class="text-black flex flex-row items-center justify-between gap-4">
                         <img src="../<?= $fetch_cart['ImagePath'] ?>" alt="<?= $fetch_cart['ProductName'] ?>" class="w-20 h-20">
                         <p><?= $fetch_cart['ProductName'] ?></p>
+                        <div>
                         <p>Qty : <input type="number" min="1" max="99" value="<?= $fetch_cart['Quantity'] ?>" name="cart-qty" class="border-4 rounded-md">
                         </p>
+                        <p class="text-end">
+                            $<?= $fetch_cart['Price'] ?>
+                        </p>
+                        </div>
+                        
                         <button type="submit" name="delete_from_cart"><i class="fa-solid fa-trash" ></i></button>
                         
                     </div>
-                    </form>
-                    <?php
-                   } ?>
-
-                    <form action="../stripe/checkout.php" method="post">
                     <input type="hidden" name="customerId" value="<?= $fetch_profile['ID']; ?>">
                     
+                   
+                    <?php
+                   } ?>
                     <button type="submit" class="border-2 rounded-md p-2 mt-4 hover:bg-blue-200" name="checkout">
                         Checkout
                     </button>
                     </form>
                    <?php
+                   
                 } else{
                 ?>
                 <div class="m-10 font-bold">
