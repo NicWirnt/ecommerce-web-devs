@@ -40,7 +40,11 @@ require_once '../config/connect.php';
          $checkout_session = \Stripe\Checkout\Session::create([
              'line_items' => $line_items,
              'mode'=>'payment',
-             'success_url' => $MY_DOMAIN . '/..pages/success.php',
+             'billing_address_collection' => 'required',
+             'shipping_address_collection' => [
+                'allowed_countries' => ['AU'],
+             ],
+             'success_url' => $MY_DOMAIN . '/../pages/success.php',
              'cancel_url' => $MY_DOMAIN . '/../pages/index.php',
              ]);
     

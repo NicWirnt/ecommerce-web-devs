@@ -1,7 +1,17 @@
 <?php
     include '../config/connect.php';
-
+    
     session_start();
+
+    if(isset($_SESSION['customer_id'])){
+        $customer_id = $_SESSION['customer_id'];
+    } else{
+        $customer_id = '';
+    }
+
+    
+    include '../components/cart.php';
+    require_once '../components/success_purchase.php';
 ?>
 
 <!DOCTYPE html>
@@ -27,5 +37,6 @@
     </div>
 
     <?php include '../components/user_footer.php' ?>
+    <script src="../assets/js/header.js"></script>
 </body>
 </html>
