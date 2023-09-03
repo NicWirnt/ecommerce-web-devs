@@ -1,7 +1,7 @@
 
 
-<div id="login-form-container" class="w-100vw">
-            <div id="login-form" class="w-full flex items-center justify-center">
+<div id="signup-form-container" class="w-100vw">
+            <div id="signup-form" class="w-full flex items-center justify-center">
                 <div class="w-[50%] m-10">
                     <form class="" action="" method="post" name="signup-form">
                         <label for="email">Email</label>
@@ -35,7 +35,7 @@
                         
                         </div>
                         <label for="phone">Phone</label>
-                        <input type="number" placeholder="Enter your phone number" name="password" required class="input-form-login"/> 
+                        <input type="number" placeholder="Enter your phone number" name="phone" required class="input-form-login"/> 
                         <label for="password">Password (min 6 character)</label>
                         <input type="password" minlength=6 placeholder="Enter your password" name="password" required class="input-form-login"/> 
                         <label for="confirmPass">Confirm your password</label>

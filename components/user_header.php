@@ -24,7 +24,7 @@
             <div class="w-full">
                 <div class="top-link flex flex-row justify-between border-b">
                     <div class=" flex flex-row gap-10 ml-8">
-                        <a href="#"> <p class="">My Account</p></a>
+                        <a href="user_account.php"> <p class="">My Account</p></a>
                         <a href="#"><p class="">About Us</p></a>
                         <a href="login.php"><p class="">Log In</p></a>    
                     </div>

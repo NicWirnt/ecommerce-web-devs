@@ -27,13 +27,17 @@
 </head>
 <body>
 <?php include '../components/user_header.php' ?>
-    <div>
-    <h1 class="text-center text-xl font-bold">Search Result</h1>
-    </div>
-
-    <div class="min-h-[45vh] m-20">
+    <div id="product-list" class="w-100 m-10">
+        <div class="text-center text-2xl">
+            Search Result
+        </div>
+    <div class="min-h-[60vh] ">
         <?php include '../components/product_card.php' ?>
     </div>
+
+    </div>
+
+    
     <?php include '../components/user_footer.php' ?>
     <script src="../assets/js/header.js"></script>
 </body>

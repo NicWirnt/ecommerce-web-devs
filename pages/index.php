@@ -33,7 +33,7 @@
                 <div class="inner-hero m-8 ">
                     <h3 class="text-2xl md:text-6xl font-mono mb-6">Summer Sale</h3>
                     <h4 class="text-lg md:text-2xl">Great Deals!!!</h4>
-                    <button type="button" class="bg-[#49d8f1e3] text-red-900 hover:bg-blue-300 rounded-md shadow-lg p-1 mt-2 text-sm md:text-base">Shop Now</button>
+                    <button type="button" class="bg-[#49d8f1e3] text-red-900 hover:bg-blue-300 rounded-md shadow-lg p-1 mt-2 text-sm md:text-base"><a href="product.php">Shop Now</a></button>
                 </div>
                 <div>
                     <img src="../assets/images/headphones_a_3.webp" alt="earphone" class="hero-banner-image"/>
