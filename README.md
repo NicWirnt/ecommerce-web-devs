@@ -5,4 +5,4 @@
 This is the uni project to build a dynamic website mainly using server side rendering languange which is PHP.
 It is a group work
 
-### Thanks to @Anh for the contribution
+### Big thanks to @Anh with her contribution
