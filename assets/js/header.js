@@ -19,7 +19,6 @@ const cart = document.querySelector(".cart-wrapper");
 document.querySelector("#cart").onclick = () => {
    
     cart.classList.toggle("active");
-    console.log(cart);
 }
 
 document.querySelector("#back-cart").onclick = () => {
