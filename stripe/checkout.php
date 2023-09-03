@@ -1,9 +1,11 @@
 <?php
 
-require_once '../config/connect.php';
+    include '../config/connect.php';
+    $conn=openCon();
 
-    if(isset($_POST['customerId'])){
-        // $cart_data = json_decode($_POST['cartData'], true);
+    if(isset($_POST['checkout'])){
+        $qty = $_POST['qty'];
+
         $customerId = $_POST['customerId'];
         $cart_data = $conn->prepare("SELECT * FROM `cart` WHERE CustomerId = ?");
         $cart_data->execute([$customerId]);
@@ -13,7 +15,7 @@ require_once '../config/connect.php';
 
         require_once "secret.php";
         
-         $MY_DOMAIN = 'http://localhost/ass2/stripe';
+         $MY_DOMAIN = 'http://localhost/ass2';
      
      
          \Stripe\Stripe::setApiKey($stripeSecretKey);
@@ -40,8 +42,12 @@ require_once '../config/connect.php';
          $checkout_session = \Stripe\Checkout\Session::create([
              'line_items' => $line_items,
              'mode'=>'payment',
-             'success_url' => $MY_DOMAIN . '/..pages/success.php',
-             'cancel_url' => $MY_DOMAIN . '/../pages/index.php',
+             'billing_address_collection' => 'required',
+             'shipping_address_collection' => [
+                'allowed_countries' => ['AU'],
+             ],
+             'success_url' => $MY_DOMAIN . '/pages/success.php',
+             'cancel_url' => $MY_DOMAIN . '/pages/index.php',
              ]);
     
              header("Location: " . $checkout_session->url);
