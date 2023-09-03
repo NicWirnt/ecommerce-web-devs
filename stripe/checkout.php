@@ -6,39 +6,38 @@
     if(isset($_POST['checkout'])){
         $qty = $_POST['qty'];
 
-        // $customerId = $_POST['customerId'];
-        // $cart_data = $conn->prepare("SELECT * FROM `cart` WHERE CustomerId = ?");
-        // $cart_data->execute([$customerId]);
-        // $cart_items = $cart_data->fetchAll(PDO::FETCH_ASSOC);
+        $customerId = $_POST['customerId'];
+        $cart_data = $conn->prepare("SELECT * FROM `cart` WHERE CustomerId = ?");
+        $cart_data->execute([$customerId]);
+        $cart_items = $cart_data->fetchAll(PDO::FETCH_ASSOC);
 
-        // require_once "../stripe-php-12.0.0/init.php";
+        require_once "../stripe-php-12.0.0/init.php";
 
-        // require_once "secret.php";
+        require_once "secret.php";
         
-        //  $MY_DOMAIN = 'http://localhost/ass2/stripe';
+         $MY_DOMAIN = 'http://localhost/ass2';
      
      
-        //  \Stripe\Stripe::setApiKey($stripeSecretKey);
+         \Stripe\Stripe::setApiKey($stripeSecretKey);
         
-        //  header('Content-Type: application/json');
+         header('Content-Type: application/json');
 
-        //  $line_items = [];
+         $line_items = [];
        
-        //  foreach ($cart_items as $item) {
-        //     $line_items[] = [
-        //         'price_data' => [
-        //             'currency' => 'aud',
-        //             'product_data' => [
-        //                 'name' => $item['ProductName'],
-        //                 'images' => [$item['ImagePath']],
-        //             ],
-        //             'unit_amount' => $item['Price'] * 100,  
-        //         ],
-        //         'quantity' => $item['Quantity'], 
-        //     ];
-        // }
+         foreach ($cart_items as $item) {
+            $line_items[] = [
+                'price_data' => [
+                    'currency' => 'aud',
+                    'product_data' => [
+                        'name' => $item['ProductName'],
+                        'images' => [$item['ImagePath']],
+                    ],
+                    'unit_amount' => $item['Price'] * 100,  
+                ],
+                'quantity' => $item['Quantity'], 
+            ];
+        }
         
-<<<<<<< Updated upstream
         //Create a Stripe Checkout Session
          $checkout_session = \Stripe\Checkout\Session::create([
              'line_items' => $line_items,
@@ -47,19 +46,10 @@
              'shipping_address_collection' => [
                 'allowed_countries' => ['AU'],
              ],
-             'success_url' => $MY_DOMAIN . '/../pages/success.php',
-             'cancel_url' => $MY_DOMAIN . '/../pages/index.php',
+             'success_url' => $MY_DOMAIN . '/pages/success.php',
+             'cancel_url' => $MY_DOMAIN . '/pages/index.php',
              ]);
-=======
-        // //Create a Stripe Checkout Session
-        //  $checkout_session = \Stripe\Checkout\Session::create([
-        //      'line_items' => $line_items,
-        //      'mode'=>'payment',
-        //      'success_url' => $MY_DOMAIN . '/..pages/success.php',
-        //      'cancel_url' => $MY_DOMAIN . '/../pages/index.php',
-        //      ]);
->>>>>>> Stashed changes
     
-        //      header("Location: " . $checkout_session->url);
+             header("Location: " . $checkout_session->url);
     }
 ?>

@@ -1,7 +1,6 @@
 <?php 
 if(isset($_POST['add_to_cart'])){
     if($customer_id ==''){
-        // header('location:/ass2/pages/login.php');
         $message[] = "Please login first";
     } else{
         $pid = $_POST['ProductId'];
@@ -45,6 +44,14 @@ if(isset($_POST['delete_from_cart'])){
     $message[] = "Product deleted from cart!";
 }
 
+if(isset($_POST['update_cart'])){
+    $cartId = $_POST['CartId'];
+    $qty = $_POST['cart-qty'];
 
+    $update_cart = $conn->prepare("UPDATE `cart` SET `Quantity` = ? WHERE `cart`.`Id` = ?");
+    $update_cart->execute([$qty, $cartId]);
+
+    $message[] = "Quantity updated";
+}
 
 ?>

@@ -36,8 +36,8 @@
                         </div>
                         <label for="phone">Phone</label>
                         <input type="number" placeholder="Enter your phone number" name="password" required class="input-form-login"/> 
-                        <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password" name="password" required class="input-form-login"/> 
+                        <label for="password">Password (min 6 character)</label>
+                        <input type="password" minlength=6 placeholder="Enter your password" name="password" required class="input-form-login"/> 
                         <label for="confirmPass">Confirm your password</label>
                         <input type="password" required placeholder="Confirm your password" name="confirmPass" class="input-form-login"/> 
                         <input type="submit" value="Sign Up" class="block bg-blue-500 text-white py-2 px-4 rounded-md cursor-pointer mt-2 mb-2 hover:bg-blue-700" name="submit"/>

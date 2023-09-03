@@ -15,6 +15,8 @@
     } else{
         $customer_id='';
     }
+
+    $cart_count = 0;
 ?>
 
 <header>
@@ -37,9 +39,9 @@
                         <i class="fa-solid fa-shop text-2xl"></i>
                     </div>
                     <div>
-                        <form action=""  class="search-bar outline rounded-md shadow-lg">
-                            <input type="text" placeholder="Search...">
-                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <form action="search.php" method="post" class="search-bar outline rounded-md shadow-lg">
+                            <input type="text" placeholder="Search..." name="search_bar">
+                            <button type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                     </div>                   
                 </div> 
@@ -66,7 +68,6 @@
                 </div>
                 <div class="relative hover:cursor-pointer" id="cart">
                 <i class="fa-solid fa-cart-shopping text-2xl pr-4 mr-1 mt-1"></i>
-                
                     <?php 
                     $cart = $conn->prepare("SELECT * FROM `cart` WHERE CustomerId = ?");
                     $cart->execute([$customer_id]);
@@ -83,7 +84,7 @@
                 <?php
                 }else{
                     ?>
-                <div class="relative hover:cursor-pointer">
+                <div class="relative hover:cursor-pointer" id="cart">
                     <i class="fa-solid fa-cart-shopping text-2xl pr-4 mr-1 mt-1"></i>
                     <p class="absolute top-0 right-0 bg-red-200 rounded-full px-2 py-1 text-xs" id="cart-count">0</p>
                 </div>
@@ -100,12 +101,13 @@
                     <span class="heading">Your Cart</span>
                     <i class="fa-solid fa-arrow-left"></i>
                     <p><?= $cart_count ?> items</p>
-                </button>
+                    </button>
                 <?php 
                 if($cart_count > 0 ){
                    while($fetch_cart = $cart->fetch(PDO::FETCH_ASSOC)){
                     ?>
-                    <form action="../stripe/checkout.php" method="post">
+                     
+                    <form method="post">
                         <input type="hidden" name="CartId" value="<?= $fetch_cart['Id']; ?>">
                         <div id="cart-product-card" class="text-black flex flex-row items-center justify-between gap-4">
                         <img src="../<?= $fetch_cart['ImagePath'] ?>" alt="<?= $fetch_cart['ProductName'] ?>" class="w-20 h-20">
@@ -114,19 +116,20 @@
                         <p>Qty : <input type="number" min="1" max="99" value="<?= $fetch_cart['Quantity'] ?>" name="cart-qty" class="border-4 rounded-md">
                         </p>
                         <p class="text-end">
-                            $<?= $fetch_cart['Price'] ?>
+                            $<?= $fetch_cart['Price'] * $fetch_cart['Quantity']; ?>
                         </p>
                         </div>
                         
+                        <button type="submit" name="update_cart" ><i class="fa-solid fa-pen-to-square"></i></button>
+
                         <button type="submit" name="delete_from_cart"><i class="fa-solid fa-trash" ></i></button>
                         
                     </div>
                     <input type="hidden" name="customerId" value="<?= $fetch_profile['ID']; ?>">
-                    
                    
                     <?php
                    } ?>
-                    <button type="submit" class="border-2 rounded-md p-2 mt-4 hover:bg-blue-200" name="checkout">
+                    <button type="submit" class="border-2 rounded-md p-2 mt-4 hover:bg-blue-200" name="checkout" formAction="../stripe/checkout.php" >
                         Checkout
                     </button>
                     </form>
