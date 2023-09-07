@@ -55,6 +55,7 @@
             <a href="/ass2/pages/index.php" >Home</a>
             <a href="/ass2/pages/product.php.">Products</a>
             <a href="/ass2/pages/categories_list.php">Categories</a>
+            <a href="/ass2/pages/orders.php">Your Orders</a>
         </nav>
         <div class="flex flex-row items-center justify-center gap-4">
         <?php
@@ -117,9 +118,9 @@
                         <div>
                         <p>Qty : <input type="number" min="1" max="99" value="<?= $fetch_cart['Quantity'] ?>" name="cart-qty" class="border-4 rounded-md">
                         </p>
-                        <p class="text-end">
+                        <input type="number" readonly class="text-end" name="totalPrice">
                             $<?= $fetch_cart['Price'] * $fetch_cart['Quantity']; ?>
-                        </p>
+                        </input>
                         </div>
                         
                         <button type="submit" name="update_cart" ><i class="fa-solid fa-pen-to-square"></i></button>
@@ -131,8 +132,8 @@
                    
                     <?php
                    } ?>
-                    <button type="submit" class="border-2 rounded-md p-2 mt-4 hover:bg-blue-200" name="checkout" formAction="../stripe/checkout.php" >
-                        Checkout
+                    <button type="submit" class="border-2 rounded-md p-2 mt-4 hover:bg-blue-200" name="add_to_order" formAction="orders.php" >
+                        Add to Order
                     </button>
                     </form>
                    <?php

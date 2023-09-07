@@ -81,11 +81,33 @@ Create Table Status (
     StatusId int primary key,
     DescriptionStatus varchar(200)
 );
+-- Create Table Orders(
+--     OrderId int primary key AUTO_INCREMENT,
+--     CustomerId int not null,
+--     OrderNumber int not null,
+--     PaymentId int not null,
+--     OrderDate DateTime not null,
+--     ShipDate DateTime not null,
+--     SalesTax float not null,
+--     OrderTimeStamp DateTime not null,
+--     TransactionStatusId int not null,
+--     ErrorLocation varchar(255),
+--     ErrorMsg varchar(255),
+--     Fullfilled boolean,
+--     Deleted boolean,
+--     Paid boolean not null,
+--     PaymentDate DateTime not null,
+--     CONSTRAINT FK_OrderStatus
+--     FOREIGN KEY (TransactionStatusId) REFERENCES Status(StatusId),
+--     CONSTRAINT FK_OrderPayment
+--     FOREIGN KEY (PaymentId) REFERENCES Payment(PaymentId),
+--     CONSTRAINT FK_CustomerOrder
+--     FOREIGN KEY (CustomerId) REFERENCES Customers(ID)
+-- );
 Create Table Orders(
     OrderId int primary key AUTO_INCREMENT,
     CustomerId int not null,
     OrderNumber int not null,
-    PaymentId int not null,
     OrderDate DateTime not null,
     ShipDate DateTime not null,
     SalesTax float not null,
@@ -99,8 +121,6 @@ Create Table Orders(
     PaymentDate DateTime not null,
     CONSTRAINT FK_OrderStatus
     FOREIGN KEY (TransactionStatusId) REFERENCES Status(StatusId),
-    CONSTRAINT FK_OrderPayment
-    FOREIGN KEY (PaymentId) REFERENCES Payment(PaymentId),
     CONSTRAINT FK_CustomerOrder
     FOREIGN KEY (CustomerId) REFERENCES Customers(ID)
 );

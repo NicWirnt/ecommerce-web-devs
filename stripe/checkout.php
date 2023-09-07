@@ -4,12 +4,13 @@
     $conn=openCon();
 
     if(isset($_POST['checkout'])){
-        $qty = $_POST['qty'];
+        $orderId = $_POST['orderId'];
 
-        $customerId = $_POST['customerId'];
-        $cart_data = $conn->prepare("SELECT * FROM `cart` WHERE CustomerId = ?");
-        $cart_data->execute([$customerId]);
-        $cart_items = $cart_data->fetchAll(PDO::FETCH_ASSOC);
+        $data = $conn->prepare("SELECT * FROM `orderdetails` WHERE OrderId = ?");
+        $data->execute([$orderId]);
+        $items = $data->fetchAll(PDO::FETCH_ASSOC);
+
+        $products=$conn->prepare("SELECT * FROM `products` WHERE ProductId = ?");
 
         require_once "../stripe-php-12.0.0/init.php";
 
@@ -23,19 +24,23 @@
          header('Content-Type: application/json');
 
          $line_items = [];
-       
-         foreach ($cart_items as $item) {
-            $line_items[] = [
-                'price_data' => [
-                    'currency' => 'aud',
-                    'product_data' => [
-                        'name' => $item['ProductName'],
-                        'images' => [$item['ImagePath']],
+         foreach ($items as $item) {
+            $products->execute([$item['ProductId']]);
+            $product = $products->fetch(PDO::FETCH_ASSOC);
+            
+            
+                $line_items[] = [
+                    'price_data' => [
+                        'currency' => 'aud',
+                        'product_data' => [
+                            'name' => $item['ProductId'],
+                        ],
+                        'unit_amount' => $item['Price'] * 100,  
                     ],
-                    'unit_amount' => $item['Price'] * 100,  
-                ],
-                'quantity' => $item['Quantity'], 
-            ];
+                    'quantity' => $item['Quantity'], 
+                ];
+            
+            
         }
         
         //Create a Stripe Checkout Session

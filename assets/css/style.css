@@ -127,6 +127,18 @@
   color: #f02d34;
 }
 
+.orders-table{
+  margin: 2rem;
+  
+}
+
+.orders-table table, th, td{
+  border:1px solid black;
+}
+.orders-table table{
+  width: 60%;
+}
+
 @media screen and (max-width: 800px){
   .hero-banner-image{
     width: 60%;
