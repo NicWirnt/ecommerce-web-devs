@@ -48,11 +48,13 @@
             </div>
         </div>
     </header>
+
+    <!-- Please change the anchor tag folder to your root folder name -->
     <div id="bottom-links" class=" sticky top-0 flex justify-between border-t-2 mb-6 bg-white z-index-50">
         <nav class="flex gap-4 nav-menu ml-8">
-            <a href="index.php" >Home</a>
-            <a href="product.php.">Products</a>
-            <a href="#">Categories</a>
+            <a href="/ass2/pages/index.php" >Home</a>
+            <a href="/ass2/pages/product.php.">Products</a>
+            <a href="/ass2/pages/categories_list.php">Categories</a>
         </nav>
         <div class="flex flex-row items-center justify-center gap-4">
         <?php

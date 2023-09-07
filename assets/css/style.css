@@ -24,7 +24,7 @@
     transform:scale(1.2)
 }
 
-.active{
+.nav-menu .active{
     border-top: 2px solid;
     color: blue;
     padding: 0 2px;
@@ -84,7 +84,13 @@
   background-color: transparent;
 }
 
+.category .slide{
+  margin-bottom:4rem;
+}
 
+.swiper-pagination-bullet-active{
+  background-color: bisque;
+}
 
 @media screen and (max-width: 800px){
   .hero-banner-image{
