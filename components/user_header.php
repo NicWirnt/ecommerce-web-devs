@@ -124,7 +124,7 @@
                         </div>
                         
                         <button type="submit" name="update_cart" ><i class="fa-solid fa-pen-to-square"></i></button>
-
+                        
                         <button type="submit" name="delete_from_cart"><i class="fa-solid fa-trash" ></i></button>
                         
                     </div>

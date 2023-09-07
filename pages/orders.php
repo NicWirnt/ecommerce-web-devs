@@ -8,6 +8,7 @@
         $customer_id = $_SESSION['customer_id'];
     } else{
         $customer_id = '';
+        $message[] = "Please Login First";
     }
     
     if(isset($_POST['add_to_order'])){
@@ -59,9 +60,15 @@
 <body>
     <?php include '../components/user_header.php' ?>
     <div id="order-container" class="min-h-[60vh] w-100vh">
-        <div class="orders-table">
-        <table >
-                <thead>
+            <div class="w-full bg-neutral-100 h-32 flex items-center justify-center flex-col">
+                <p class="font-bold text-4xl">Your Orders</p>
+            </div>
+        <div class="orders-table flex justify-center">
+        <?php
+            if($customer_id){
+                ?>
+                     <table >
+                    <thead>
                     <tr>
                         <th>Order Number</td>
                         <th>Status</td>
@@ -77,30 +84,51 @@
                 $orders->execute([$customer_id]);
                 if($orders->rowCount()>0){
                     while($fetch_orders = $orders->fetch(PDO::FETCH_ASSOC)){
+                        $orderId = $fetch_orders['OrderId'];
                         $paymentMade = $fetch_orders['Paid'];
                         if($paymentMade==0){
                             $paymentMade = "Not Paid";
                         }else{
                             $paymentMade = "Paid";
                         }
+                        
                         ?>
                     <tr>
-                    
-                        <td class="text-center"><input type="text" value=<?= $fetch_orders['OrderId']; ?> name="orderId" readonly></td>
+                    <input type="text" value=<?= $orderId ?> name="orderId_<?= $orderId ?>" hidden>
+                        <td class="text-center"><?= $fetch_orders['OrderId'] ?></td>
                         <td class="text-center">
                             <?php
                             echo $paymentMade;
                             ?>
                         </td>
-                        <td class="text-center">
-                            <button type="submit" formaction="../stripe/checkout.php" name="checkout" class="bg-neutral-200 hover:bg-neutral-300 rounded-md p-1">
-                                Pay Now
-                            </button>
+                        
+                        
+                        <?php
+                            if($paymentMade=="Not Paid"){
+                                ?><td class="text-center">
+                                    <button type="submit" formaction="../stripe/checkout.php?orderId=<?= $orderId ?>" name="checkout" class="bg-neutral-200 hover:bg-neutral-300 rounded-md p-1">
+                                    Pay Now
+                                    </button>
+                                    </td>
+                                <td class="text-center">
+                                <a href="../components/order_delete.php?orderid=<?= $orderId ?>" onclick=" return confirm('Are you sure to delete this order?')"><button type="button" name="delete_from_order"><i class="fa-solid fa-trash" ></i></button></a>    
+                                </td>
+                                <td class="text-center">
+                            <button type="submit" name="orders_detail" formaction="order_detail.php?orderId=<?= $orderId ?>" class="bg-neutral-200 hover:bg-neutral-300 rounded-md p-1">Order Details</button>
                         </td>
-                        <td class="text-center"><button type="submit" name="delete_from_order"><i class="fa-solid fa-trash" ></i></button></td>
-                        <td class="text-center">
-                            <button type="submit" name="orders_detail" class="bg-neutral-200 hover:bg-neutral-300 rounded-md p-1">Order Details</button>
-                        </td>
+                                <?php
+                            } else{
+                                ?>
+                                    <td colspan="3" class="text-center">
+                                    <button type="submit" name="orders_detail" class="bg-neutral-200 hover:bg-neutral-300 rounded-md p-1" formaction="order_detail.php?orderId=<?= $orderId ?>" >Order Details</button>
+                            </td>
+                                <?php
+                            }
+                                
+                        ?>
+                        
+                        
+                        
                     </tr>
                         <?php
                     }
@@ -111,6 +139,14 @@
                </form>
                 </tbody>
             </table>
+                <?php
+            }else{
+                ?>
+                <div class="font-bold text-xl">Please Login first to see your orders</div>
+                <?php
+            }
+        ?>
+       
         </div>
     </div>
     <?php include '../components/user_footer.php' ?>

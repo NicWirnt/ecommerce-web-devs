@@ -129,7 +129,13 @@
 
 .orders-table{
   margin: 2rem;
-  
+}
+
+.orders-details-table{
+  margin: 2rem;
+}
+.orders-details-table table{
+  width: 80%;
 }
 
 .orders-table table, th, td{
