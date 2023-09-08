@@ -10,6 +10,9 @@
         $customer_id = '';
     }
 
+    $orderId = $_GET['orderId'];
+    $update_order = $conn->prepare("UPDATE `orders` SET `Paid` = ? WHERE `orders`.`OrderId` = ?");
+    $update_order->execute([true, $orderId]);
     include '../components/cart.php';
     require_once '../components/success_purchase.php';
 ?>

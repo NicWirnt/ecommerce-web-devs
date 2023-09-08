@@ -7,10 +7,25 @@
             $search = $_POST['search_bar'];
             
             $products = $conn->prepare("SELECT * FROM `products` WHERE ProductName LIKE '%{$search}%'");
-        }else{
-            $products = $conn->prepare("SELECT * FROM `products`");
+            $products -> execute();
+        }else if(isset($_GET['category'])){
+            $category = $_GET['category'];
+            
+            $category_product = $conn->prepare("SELECT * FROM `categories` WHERE CategoryName = ?");
+            $category_product -> execute([$category]);
+            if($category_product->rowCount()>0){
+                while($fetch_category = $category_product->fetch(PDO::FETCH_ASSOC)){
+                    $category_id = $fetch_category['CategoryId'];
+                    $products = $conn->prepare("SELECT * FROM `products` WHERE CategoryId = ?");
+                    $products -> execute([$category_id]);
+                }
+            }
         }
-        $products -> execute();
+        else{
+            $products = $conn->prepare("SELECT * FROM `products`");
+            $products -> execute();
+        }
+        
         
         if($products->rowCount() > 0){
             while($fetch_product = $products->fetch(PDO::FETCH_ASSOC)){
@@ -22,9 +37,11 @@
                 <input type="hidden" name="ProductImage" value="<?= $fetch_product['ImagePath']; ?>">
                 <input type="hidden" name="ProductDescription" value="<?= $fetch_product['ProductDescription']; ?>">
                 <div class="flex flex-col justify-center items-center gap-4 mt-10 w-full ">
+                    
+                    <a href="product_detail.php?product=<?= $fetch_product['ProductName']?>">
                     <div class=" bg-neutral-200 rounded-xl transition-all duration-300 hover:bg-blue-200 hover:scale-110 hover:cursor-pointer shadow-xl  text-center">
-                    <div class="w-full">
-                    <img src="../<?= $fetch_product['ImagePath'] ?>" alt="<?= $fetch_product['ProductName'] ?>" class="rounded-md w-full lg:h-52 md:h-40 h-40" >
+                    <div class="flex justify-center items-center w-52 md:w-48 lg:w-52 xl:w-64">
+                    <img src="../<?= $fetch_product['ImagePath'] ?>" alt="<?= $fetch_product['ProductName'] ?>" class="rounded-md w-fit lg:h-52 md:h-40 h-40 " >
                     </div>
                     <p class="font-bold text-[1.5rem]"><?= $fetch_product['ProductName']; ?></p>
                     <p><?= $fetch_product['ProductDescription']; ?></p>
@@ -36,6 +53,7 @@
                      />
                    
                     </div>
+                    </a>
                 </div>
                 </form>
                 <?php    

@@ -81,11 +81,33 @@ Create Table Status (
     StatusId int primary key,
     DescriptionStatus varchar(200)
 );
+-- Create Table Orders(
+--     OrderId int primary key AUTO_INCREMENT,
+--     CustomerId int not null,
+--     OrderNumber int not null,
+--     PaymentId int not null,
+--     OrderDate DateTime not null,
+--     ShipDate DateTime not null,
+--     SalesTax float not null,
+--     OrderTimeStamp DateTime not null,
+--     TransactionStatusId int not null,
+--     ErrorLocation varchar(255),
+--     ErrorMsg varchar(255),
+--     Fullfilled boolean,
+--     Deleted boolean,
+--     Paid boolean not null,
+--     PaymentDate DateTime not null,
+--     CONSTRAINT FK_OrderStatus
+--     FOREIGN KEY (TransactionStatusId) REFERENCES Status(StatusId),
+--     CONSTRAINT FK_OrderPayment
+--     FOREIGN KEY (PaymentId) REFERENCES Payment(PaymentId),
+--     CONSTRAINT FK_CustomerOrder
+--     FOREIGN KEY (CustomerId) REFERENCES Customers(ID)
+-- );
 Create Table Orders(
     OrderId int primary key AUTO_INCREMENT,
     CustomerId int not null,
     OrderNumber int not null,
-    PaymentId int not null,
     OrderDate DateTime not null,
     ShipDate DateTime not null,
     SalesTax float not null,
@@ -99,8 +121,6 @@ Create Table Orders(
     PaymentDate DateTime not null,
     CONSTRAINT FK_OrderStatus
     FOREIGN KEY (TransactionStatusId) REFERENCES Status(StatusId),
-    CONSTRAINT FK_OrderPayment
-    FOREIGN KEY (PaymentId) REFERENCES Payment(PaymentId),
     CONSTRAINT FK_CustomerOrder
     FOREIGN KEY (CustomerId) REFERENCES Customers(ID)
 );
@@ -162,9 +182,25 @@ INSERT INTO `suppliers` (`SupplyId`, `CompanyName`, `Address1`, `City`, `Phone`,
 INSERT INTO `suppliers` (`SupplyId`, `CompanyName`, `Address1`, `City`, `Phone`, `Email`, `Discount`, `Notes`) VALUES ('4', 'Logitech', NULL, NULL, NULL, NULL, NULL, NULL);
 
 /*Products*/
-INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('1', 'Iphone 11', 'Iphone 11', '1', '1', '1', '1100', NULL, NULL, '900', '10', '1', '1', '1', NULL);
-INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('2', 'Iphone 12', 'Iphone 12', '1', '1', '1', '1200', NULL, NULL, '1300', '5', '1', '1', '1', NULL);
-INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('3', 'Samsung Z Fold', 'Samsung Z Fold', '2', '2', '1', '1500', NULL, NULL, '1000', '21', '1', '1', '1', NULL);
-INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('4', 'Keyboard Logitech', 'Keyboard Logitech', '4', '5', '1', '200', NULL, NULL, '400', '7', '1', '1', '1', NULL);
-INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`) VALUES ('5', 'Headphone', 'Headphone Xiaomi', '3', '4', '1', '350', NULL, 'White', '280', '6', '1', '1', '0', NULL);
+INSERT INTO `products` (`ProductId`, `ProductName`, `ProductDescription`, `SupplierId`, `CategoryId`, `QuantityPerUnits`, `UnitPrice`, `AvailableSize`, `AvailableColor`, `UnitWeight`, `UnitInStock`, `UnitOnOrder`, `ProductAvailable`, `DiscountAvailable`, `Notes`, `ImagePath`) VALUES
+(1, 'Iphone 11', 'Iphone 11', 1, 1, 1, 1100, NULL, NULL, 900, 10, 1, 1, 1, NULL, 'assets/images/iphone11.jpg'),
+(2, 'Iphone 12', 'Iphone 12', 1, 1, 1, 1200, NULL, NULL, 1300, 5, 1, 1, 1, NULL, 'assets/images/iphone12.jpeg'),
+(3, 'Samsung Z Fold', 'Samsung Z Fold', 2, 2, 1, 1500, NULL, NULL, 1000, 21, 1, 1, 1, NULL, 'assets/images/galaxy_z_fold.jpg'),
+(4, 'Keyboard Logitech', 'Keyboard Logitech', 4, 5, 1, 200, NULL, NULL, 400, 7, 1, 1, 1, NULL, 'assets/images/keyboard_logitech.png'),
+(5, 'Headphone', 'Headphone Xiaomi', 3, 4, 1, 350, NULL, 'White', 280, 6, 1, 1, 0, NULL, 'assets/images/headphones_a_1.webp');
 
+
+-- ORDER
+INSERT INTO `orders` (`OrderId`, `CustomerId`, `OrderNumber`, `PaymentId`, `OrderDate`, `ShipDate`, `SalesTax`, `OrderTimeStamp`, `TransactionStatusId`, `ErrorLocation`, `ErrorMsg`, `Fullfilled`, `Deleted`, `Paid`, `PaymentDate`) VALUES
+(15, 11, 0, 1, '2023-09-07 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, NULL, NULL, NULL, NULL, 1, '0000-00-00 00:00:00'),
+(19, 11, 0, 1, '2023-09-07 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, NULL, NULL, NULL, NULL, 0, '0000-00-00 00:00:00');
+
+-- ORDER DETAILS
+INSERT INTO `orderdetails` (`OrderDetailsId`, `OrderId`, `ProductId`, `OrderNumber`, `Price`, `Quantity`, `Discount`, `Total`, `Size`, `Color`, `Fullfilled`, `ShipDate`, `BillDate`) VALUES
+(5, 15, 2, 0, 1200, 1, NULL, 1200, NULL, NULL, NULL, NULL, NULL),
+(6, 15, 4, 0, 200, 1, NULL, 200, NULL, NULL, NULL, NULL, NULL),
+(9, 19, 2, 0, 1200, 1, NULL, 1200, NULL, NULL, NULL, NULL, NULL);
+
+-- Payment
+INSERT INTO `payment` (`PaymentId`, `PaymentTypeId`, `CardHolderName`) VALUES
+(1, 1, 'Nico');
