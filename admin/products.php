@@ -1,5 +1,6 @@
 <div class="grid gap-1" style="margin: 2rem 5rem;">
     <p class="text-sky-400">Product Management</p>
+    
     <?php 
         include("../config/connect.php");
         include("welcome.php");
@@ -45,5 +46,6 @@
 
         
         CloseCon($conn);
-    ?>          
+    ?>
+    <p class="text-sky-400"> <a href="add_product.php">Add New Product</a></p>     
 </div>
