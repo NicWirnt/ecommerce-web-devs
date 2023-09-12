@@ -6,7 +6,7 @@
     $conn = OpenCon();
     session_start();
     if(isset($_SESSION['admin_id'])) {
-        include("welcome.php");
+        include("index.php");
         $Q = explode('=',$_SERVER['QUERY_STRING']);
         $product_id = $Q[1];
         $select = $conn->prepare("SELECT * FROM `products` 

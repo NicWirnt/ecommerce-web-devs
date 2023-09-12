@@ -2,7 +2,7 @@
     <p class="text-sky-400">Add New Product</p>
 <?php 
     include("../config/connect.php");
-    include("welcome.php");
+    include("index.php");
     $conn = OpenCon();
     session_start();
     if($_SERVER["REQUEST_METHOD"] == "POST") {

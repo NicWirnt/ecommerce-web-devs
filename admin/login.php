@@ -1,6 +1,6 @@
 <?php
    include("../config/connect.php");
-   include("welcome.php");
+   include("index.php");
    $conn = OpenCon();
    echo "Connected Successfully";
    session_start();

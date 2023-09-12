@@ -3,7 +3,7 @@
     
     <?php 
         include("../config/connect.php");
-        include("welcome.php");
+        include("index.php");
         $conn = OpenCon();
         session_start();
         if(isset($_SESSION['admin_id'])){ ?>
@@ -15,6 +15,7 @@
                         <th scope="col" class="px-6 py-3">Description</th>
                         <th scope="col" class="px-6 py-3">Product Price</th>
                         <th scope="col" class="px-6 py-3">Edit</th>
+                        <th scope="col" class="px-6 py-3">Delete</th>
                     </tr> 
                 </thead>   
             <?php
@@ -31,7 +32,13 @@
                                 <i class="fa fa-edit"></i> 
                             </a>
                             
-                    </td>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="/final/ecommerce-web-devs/admin/delete_product.php?id=<?= $row['ProductId'];?>">
+                                <i class="fa fa-remove"></i> 
+                            </a>
+                            
+                        </td>
                     </tr>
                     <?php    
                 } ?> </table> </div>

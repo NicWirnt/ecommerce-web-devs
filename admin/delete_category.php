@@ -6,11 +6,11 @@
     if(isset($_SESSION['admin_id'])) {
         include("index.php");
         $Q = explode('=',$_SERVER['QUERY_STRING']);
-        $product_id = $Q[1];
+        $cat_id = $Q[1];
         try {
-            $delete = $conn->prepare("DELETE FROM `products` WHERE `ProductId` = ? LIMIT 1;");
-            $delete->execute([$product_id]);
-            header("location: products.php");
+            $delete = $conn->prepare("DELETE FROM `categories` WHERE `CategoryId` = ? LIMIT 1;");
+            $delete->execute([$cat_id]);
+            header("location: categories.php");
         } catch (\Throwable $th) {
             echo $th;
         }
