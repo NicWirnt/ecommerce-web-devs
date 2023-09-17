@@ -37,7 +37,7 @@
                     <a href="categories.php" class="text-gray-900 dark:text-white hover:underline">Categories</a>
                 </li>
                 <li>
-                    <a href="#" class="text-gray-900 dark:text-white hover:underline">Orders Management</a>
+                    <a href="orders.php" class="text-gray-900 dark:text-white hover:underline">Orders Management</a>
                 </li>
             </ul>
         </div>
