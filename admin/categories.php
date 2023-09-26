@@ -33,13 +33,13 @@
                         else {echo "InActive";};  
                         ?></td>
                         <td class="px-6 py-4">
-                            <a href="/final/ecommerce-web-devs/admin/category.php?id=<?= $row['CategoryId'];?>">
+                            <a href="/ass2/admin/category.php?id=<?= $row['CategoryId'];?>">
                                 <i class="fa fa-edit"></i> 
                             </a>
                             
                         </td>
                         <td class="px-6 py-4">
-                            <a href="/final/ecommerce-web-devs/admin/delete_category.php?id=<?= $row['CategoryId'];?>">
+                            <a href="/ass2/admin/delete_category.php?id=<?= $row['CategoryId'];?>">
                                 <i class="fa fa-remove"></i> 
                             </a>
                             

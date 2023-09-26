@@ -28,13 +28,13 @@
                         <td class="px-6 py-4"><?= $row['ProductDescription']; ?></td>
                         <td class="px-6 py-4">$<?= $row['UnitPrice']  ?></td>
                         <td class="px-6 py-4">
-                            <a href="/final/ecommerce-web-devs/admin/product.php?id=<?= $row['ProductId'];?>">
+                            <a href="/ass2/admin/product.php?id=<?= $row['ProductId'];?>">
                                 <i class="fa fa-edit"></i> 
                             </a>
                             
                         </td>
                         <td class="px-6 py-4">
-                            <a href="/final/ecommerce-web-devs/admin/delete_product.php?id=<?= $row['ProductId'];?>">
+                            <a href="/ass2/admin/delete_product.php?id=<?= $row['ProductId'];?>">
                                 <i class="fa fa-remove"></i> 
                             </a>
                             
