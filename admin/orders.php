@@ -38,7 +38,7 @@
                         <td class="px-6 py-4"><?= $row['PaymentDate']; ?></td>
                         <td class="px-6 py-4"><?= $row['SalesTax']; ?>%</td>
                         <td class="px-6 py-4">
-                            <a href="/final/ecommerce-web-devs/admin/order_details.php?id=<?= $row['OrderNumber'];?>">
+                            <a href="/ass2/admin/order_details.php?id=<?= $row['OrderNumber'];?>">
                                 <i class="fa fa-eye"></i> 
                             </a>                           
                         </td>

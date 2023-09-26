@@ -35,7 +35,7 @@
                         <td class="px-6 py-4"><?= $row['Phone']; ?></td>
                         <td class="px-6 py-4"><?= $row['PostalCode']; ?></td>
                         <td class="px-6 py-4">
-                            <a href="/final/ecommerce-web-devs/admin/customer.php?id=<?= $row['ID'];?>">
+                            <a href="/ass2/admin/customer.php?id=<?= $row['ID'];?>">
                                 <i class="fa fa-eye"></i> 
                             </a>
                             

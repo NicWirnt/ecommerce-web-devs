@@ -36,7 +36,7 @@
                 <label class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">ShipDate</label>
             </div>
             <div class="relative z-0 w-full mb-6 group">
-            <a href="/final/ecommerce-web-devs/admin/order_details.php?id=<?= $row['OrderId'];?>">
+            <a href="/ass2/admin/order_details.php?id=<?= $row['OrderId'];?>">
                                 <i class="fa fa-eye"></i> 
                             </a>
                 <label style="margin: 10px;" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">View Orders</label>

@@ -13,7 +13,7 @@
                             </div>
                             <div>
                             <label for="lName">Last Name</label>
-                            <input type="text" placeholder="Enter your last name" name="lName" class="input-form-login"/>
+                            <input type="text" placeholder="Enter your last name" name="lName" required class="input-form-login"/>
                             </div>
                         
                         </div>
